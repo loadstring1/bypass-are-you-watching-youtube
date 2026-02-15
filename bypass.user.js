@@ -12,6 +12,7 @@
 // @downloadURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.user.js
 // @updateURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.user.js
 // @grant none
+// @noframes
 // ==/UserScript==
 
 function customLog(str){
@@ -30,5 +31,5 @@ function ass(){
     setTimeout(ass,1000)
 };
 
-customLog("started")
+customLog(`started ${location.href}`)
 ass()
