@@ -9,21 +9,26 @@
 // @match *://*.music.youtube.com/*
 // @run-at document-end
 // @author loadstring1 - coza
-// @download-url https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.js
-// @update-url https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.js
+// @download-url https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.user.js
+// @update-url https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.user.js
 // @grant none
 // ==/UserScript==
 
+function customLog(str){
+    console.log(`better nonstop: ${str}`)
+}
+
 function ass(){
     if (document.querySelector("#confirm-button")==null){
+        customLog("working")
         setTimeout(ass,1000)
         return;
     }
     
     document.querySelector("#confirm-button").click();
-    console.log("clicked");
+    customLog("clicked");
     setTimeout(ass,1000)
 };
 
-console.log("youtube better nonstop started")
+customLog("started")
 ass()
