@@ -20,18 +20,25 @@ function customLog(str){
 }
 
 async function ass(){
-    if (document.querySelector("#confirm-button")==null){
-        customLog("working")
+    if (document.querySelector("tp-yt-paper-dialog")==null || document.querySelector("#confirm-button")==null){
+        customLog("waiting for this stupid ass popup")
         setTimeout(ass,1000)
         return;
     }
     
-    customLog("waiting 1 second before clicking")
+    customLog("waiting 3 seconds before clicking")
 
-    await new Promise((resolve=>{setTimeout(resolve,1000)}))
+    await new Promise((resolve=>{setTimeout(resolve,3000)}))
     document.querySelector("#confirm-button").click();
-    
+
     customLog("clicked");
+
+    customLog("waiting 3 seconds before removing the dialog")
+
+    await new Promise((resolve=>{setTimeout(resolve,3000)}))
+    document.querySelector("tp-yt-paper-dialog").remove()
+
+    customLog("dialog removed recalling ass")
     setTimeout(ass,1000)
 };
 
