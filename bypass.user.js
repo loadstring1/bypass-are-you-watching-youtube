@@ -9,8 +9,8 @@
 // @match *://*.music.youtube.com/*
 // @run-at document-end
 // @author loadstring1 - coza
-// @download-url https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.user.js
-// @update-url https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.user.js
+// @downloadURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.user.js
+// @updateURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.user.js
 // @grant none
 // ==/UserScript==
 
