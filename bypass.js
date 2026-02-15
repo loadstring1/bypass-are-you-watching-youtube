@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name YouTube bypass are you still watching
-// @namespace github.com
+// @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
+// @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @version 0.1
 // @description  Bypasses are you still watching
 // @match http://www.youtube.com/watch?v=*
