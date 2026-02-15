@@ -5,6 +5,8 @@
 // @description  Bypasses are you still watching
 // @match http://www.youtube.com/watch?v=*
 // @run-at document-end
+// @download-url https://raw.githubusercontent.com/loadstring1/bypass-are-you-watching-youtube/refs/heads/main/bypass.js
+// @update-url https://raw.githubusercontent.com/loadstring1/bypass-are-you-watching-youtube/refs/heads/main/bypass.js
 // ==/UserScript==
 
 function ass(){
