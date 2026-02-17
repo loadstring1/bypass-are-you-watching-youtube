@@ -32,13 +32,7 @@ async function ass(){
     document.querySelector("#confirm-button").click();
 
     customLog("clicked");
-
-    customLog("waiting 3 seconds before removing the dialog")
-
-    await new Promise((resolve=>{setTimeout(resolve,3000)}))
-    document.querySelector("tp-yt-paper-dialog").remove()
-
-    customLog("dialog removed recalling ass")
+    
     setTimeout(ass,1000)
 };
 
