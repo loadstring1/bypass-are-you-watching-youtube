@@ -2,7 +2,7 @@
 // @name YouTube Better NonStop
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version 1.1
+// @version 1.2
 // @description  Bypasses are you still watching
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
@@ -26,12 +26,8 @@ async function ass(){
         return;
     }
     
-    customLog("waiting 3 seconds before clicking")
-
-    await new Promise((resolve=>{setTimeout(resolve,3000)}))
-    document.querySelector("#confirm-button").click();
-
-    customLog("clicked");
+    customLog("alright just refresh page lmao")
+    location.reload()
     
     setTimeout(ass,1000)
 };
