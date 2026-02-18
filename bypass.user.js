@@ -19,11 +19,26 @@ function customLog(str){
     console.log(`better nonstop: ${str}`)
 }
 
+var shouldKeepChecking=false
+function keepVideoPlaying(vid){
+    if (shouldKeepChecking==false) return;
+    customLog("loop checking if youtube still kept the video paused")
+
+    if (vid.paused){
+        vid.play()
+    }
+
+    setTimeout(()=>{
+        keepVideoPlaying(vid)
+    },1000)
+}
+
 async function ass(){
+    var video=document.querySelector("video")
     var shittyDialog=document.querySelector("tp-yt-paper-dialog")
     var confirmButton=shittyDialog && shittyDialog.querySelector("#confirm-button") || null
 
-    if (shittyDialog==null || confirmButton==null){
+    if (video==null || shittyDialog==null || confirmButton==null){
         customLog("waiting for this stupid ass popup")
         setTimeout(ass,1000)
         return;
@@ -35,12 +50,20 @@ async function ass(){
         return;
     }
     
-    customLog("detected shitty dialog - waiting 3 seconds")
-    await new Promise((resolve=>setTimeout(resolve,3000)))
+    customLog("detected shitty dialog - waiting 1 second")
+    await new Promise((resolve=>setTimeout(resolve,1000)))
 
     confirmButton.click()
     customLog("confirm button clicked.")
-    
+
+    shouldKeepChecking=true
+    keepVideoPlaying(video)
+
+    setTimeout(()=>{
+        shouldKeepChecking=false
+        customLog("loop check killed.")
+    },5000)
+
     setTimeout(ass,1000)
 };
 
