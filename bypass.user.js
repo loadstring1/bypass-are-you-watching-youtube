@@ -2,7 +2,7 @@
 // @name YouTube Better NonStop
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version 1.2
+// @version 1.3
 // @description  Bypasses are you still watching
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
@@ -20,14 +20,26 @@ function customLog(str){
 }
 
 async function ass(){
-    if (document.querySelector("tp-yt-paper-dialog")==null || document.querySelector("#confirm-button")==null){
+    var shittyDialog=document.querySelector("tp-yt-paper-dialog")
+    var confirmButton=shittyDialog && shittyDialog.querySelector("#confirm-button") || null
+
+    if (shittyDialog==null || confirmButton==null){
         customLog("waiting for this stupid ass popup")
         setTimeout(ass,1000)
         return;
     }
+
+    if (window.getComputedStyle(shittyDialog).display=="none"){
+        customLog("shitty popup is hidden. retrying...")
+        setTimeout(ass,1000)
+        return;
+    }
     
-    customLog("alright just refresh page lmao")
-    location.reload()
+    customLog("detected shitty dialog - waiting 3 seconds")
+    await new Promise((resolve=>setTimeout(resolve,3000)))
+
+    confirmButton.click()
+    customLog("confirm button clicked.")
     
     setTimeout(ass,1000)
 };
