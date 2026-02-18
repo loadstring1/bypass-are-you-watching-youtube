@@ -2,7 +2,7 @@
 // @name YouTube Better NonStop
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version 1.5
+// @version 1.6
 // @description  Bypasses are you still watching
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
@@ -40,13 +40,13 @@ async function ass(){
 
     if (video==null || shittyDialog==null || confirmButton==null){
         customLog("waiting for this stupid ass popup")
-        setTimeout(ass,1000)
+        setTimeout(ass,300)
         return;
     }
 
     if (window.getComputedStyle(shittyDialog).display=="none"){
         customLog("shitty popup is hidden. retrying...")
-        setTimeout(ass,1000)
+        setTimeout(ass,300)
         return;
     }
     
