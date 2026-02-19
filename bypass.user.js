@@ -2,7 +2,7 @@
 // @name YouTube Better NonStop
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version 1.7
+// @version 1.8
 // @description  Bypasses are you still watching
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
@@ -72,6 +72,7 @@ customLog(`started ${location.href}`)
 
 customLog(`hooking focus`)
 
+window.addEventListener("blur",(e)=>{e.stopImmediatePropagation()},{capture:true})
 Object.defineProperty(document, "visibilityState", {value: "visible", writable: false});
 Object.defineProperty(document, "hidden", {value: false, writable: false});
 Object.defineProperty(document, "hasFocus",{
