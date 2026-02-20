@@ -74,6 +74,7 @@ customLog(`hooking focus`)
 
 window.addEventListener("blur",(e)=>{
     if (e.target && e.target.className=="masthead-finish")return;
+    if (e.target && e.target.className=="chunked masthead-finish") return;
     e.stopImmediatePropagation()
 },{capture:true})
 Object.defineProperty(document, "visibilityState", {value: "visible", writable: false});
