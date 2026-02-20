@@ -2,7 +2,7 @@
 // @name YouTube Better NonStop
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version 1.9.0
+// @version 1.9.0.000
 // @description  Bypasses are you still watching
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
