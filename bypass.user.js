@@ -47,7 +47,7 @@
 //         setTimeout(ass,300)
 //         return;
 //     }
-    
+
 //     customLog("detected shitty dialog - waiting 1 second")
 
 //     shouldKeepChecking=true
