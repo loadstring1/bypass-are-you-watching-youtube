@@ -15,10 +15,6 @@
 // @noframes
 // ==/UserScript==
 
-function customLog(str){
-    console.log(`better nonstop: ${str}`)
-}
-
 //old method - commented out bc its just wasting cpu cycles when event hook is better
 
 // var shouldKeepChecking=false
@@ -71,6 +67,10 @@ function customLog(str){
 // };
 
 //ass()
+
+function customLog(str){
+    console.log(`better nonstop: ${str}`)
+}
 
 customLog(`started ${location.href}`)
 customLog(`hooking focus`)
