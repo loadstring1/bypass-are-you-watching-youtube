@@ -2,7 +2,7 @@
 // @name YouTube Better NonStop
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version 1.9.1.6769
+// @version 1.9.1.6770
 // @description Bypasses are you still watching
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
@@ -30,7 +30,7 @@ function keepVideoPlaying(vid){
 
     setTimeout(()=>{
         keepVideoPlaying(vid)
-    },1000)
+    },100)
 }
 
 async function ass(){
