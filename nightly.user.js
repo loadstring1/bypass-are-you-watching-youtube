@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name YouTube Better NonStop
+// @name YouTube Better NonStop nightly
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version nightly-1.9.2.6770
+// @version 1.9.2.6770
 // @description Bypasses are you still watching
 // @match http://youtube.com/*
 // @match https://youtube.com/*
