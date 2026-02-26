@@ -4,10 +4,7 @@
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @version 1.9.2.6770
 // @description Bypasses are you still watching
-// @match http://youtube.com/*
-// @match https://youtube.com/*
-// @match http://www.youtube.com/*
-// @match https://www.youtube.com/*
+// @match *://*.youtube.com/*
 // @run-at document-start
 // @author loadstring1 - coza
 // @downloadURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/nightly.user.js
@@ -85,4 +82,22 @@ Object.defineProperty(document, "hasFocus",{
 })
 
 customLog("focus hooked")
+
+customLog("hooking pause")
+
+const originalPause = HTMLVideoElement.prototype.pause;
+HTMLVideoElement.prototype.pause = function() {
+    const stack = new Error().stack;
+
+    if (stack.includes('youThere') || stack.includes('youthere')) {
+        console.log("Zablokowano próbę zatrzymania filmu!");
+        return; 
+    }
+    console.log(stack,"paused the video")
+
+    return originalPause.apply(this, arguments);
+};
+
+customLog("pause hooked")
+
 ass()
