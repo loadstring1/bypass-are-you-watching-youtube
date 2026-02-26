@@ -98,6 +98,7 @@ HTMLVideoElement.prototype.pause = function() {
 
     customLog(`${stack}\npaused the video`)
     customLog(`${splitted}`)
+    customLog(`last stack: ${lastStack}`)
 
     return originalPause.apply(this, arguments);
 };
