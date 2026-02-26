@@ -90,10 +90,10 @@ HTMLVideoElement.prototype.pause = function() {
     const stack = new Error().stack;
 
     if (stack.includes('youThere') || stack.includes('youthere')) {
-        console.log("Zablokowano próbę zatrzymania filmu!");
+        customLog("pause blocked!");
         return; 
     }
-    console.log(stack,"paused the video")
+    customLog(`${stack}\npaused the video`)
 
     return originalPause.apply(this, arguments);
 };
