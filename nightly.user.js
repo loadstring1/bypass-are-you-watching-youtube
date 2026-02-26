@@ -2,15 +2,14 @@
 // @name YouTube Better NonStop
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version stable-1.9.1.6770
+// @version nightly-1.9.2.6770
 // @description Bypasses are you still watching
-// @match *://*.youtube.com/*
-// @match *://music.youtube.com/*
-// @match *://*.music.youtube.com/*
+// @match http://youtube.com/*
+// @match https://youtube.com/*
 // @run-at document-start
 // @author loadstring1 - coza
-// @downloadURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.user.js
-// @updateURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.user.js
+// @downloadURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/nightly.user.js
+// @updateURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/nightly.user.js
 // @grant none
 // @noframes
 // ==/UserScript==
