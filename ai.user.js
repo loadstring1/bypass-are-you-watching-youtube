@@ -4,6 +4,10 @@
 // @match https://youtube.com/*
 // @match http://www.youtube.com/*
 // @match http://youtube.com/*
+// @version 1.0
+// @author loadstring1 - coza
+// @downloadURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/ai.user.js
+// @updateURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/ai.user.js
 // @run-at document-start
 // @grant none
 // @noframes
