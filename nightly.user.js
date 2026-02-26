@@ -6,6 +6,8 @@
 // @description Bypasses are you still watching
 // @match http://youtube.com/*
 // @match https://youtube.com/*
+// @match http://www.youtube.com/*
+// @match https://www.youtube.com/*
 // @run-at document-start
 // @author loadstring1 - coza
 // @downloadURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/nightly.user.js
