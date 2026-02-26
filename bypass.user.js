@@ -7,7 +7,7 @@
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
 // @match *://*.music.youtube.com/*
-// @run-at document-end
+// @run-at document-start
 // @author loadstring1 - coza
 // @downloadURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.user.js
 // @updateURL https://github.com/loadstring1/bypass-are-you-watching-youtube/raw/refs/heads/main/bypass.user.js
