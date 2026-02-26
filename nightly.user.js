@@ -88,12 +88,16 @@ customLog("hooking pause")
 const originalPause = HTMLVideoElement.prototype.pause;
 HTMLVideoElement.prototype.pause = function() {
     const stack = new Error().stack;
+    const splitted=stack.split("\n")
 
-    if (stack.includes('youThere') || stack.includes('youthere')) {
-        customLog("pause blocked!");
-        return; 
+    const lastStack=splitted[splitted.length-1]
+    if (lastStack && lastStack.includes("pause")){
+        customLog("are you there pause blocked!")
+        return;
     }
+
     customLog(`${stack}\npaused the video`)
+    customLog(`${splitted}`)
 
     return originalPause.apply(this, arguments);
 };
