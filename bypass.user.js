@@ -2,7 +2,7 @@
 // @name YouTube Better NonStop stable
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version 1.9.1.6771
+// @version 1.9.1.6772
 // @description Bypasses are you still watching
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
@@ -69,19 +69,19 @@ async function ass(){
 };
 
 customLog(`started ${location.href}`)
-customLog(`hooking focus`)
+// customLog(`hooking focus`)
 
-window.addEventListener("blur",(e)=>{
-    if (e.target && e.target.className=="masthead-finish")return;
-    if (e.target && e.target.className=="chunked masthead-finish") return;
-    e.stopImmediatePropagation()
-},{capture:true})
-Object.defineProperty(document, "visibilityState", {value: "visible", writable: false});
-Object.defineProperty(document, "hidden", {value: false, writable: false});
-Object.defineProperty(document, "hasFocus",{
-    value:()=>{return true;},
-    writable:false,
-})
+// window.addEventListener("blur",(e)=>{
+//     if (e.target && e.target.className=="masthead-finish")return;
+//     if (e.target && e.target.className=="chunked masthead-finish") return;
+//     e.stopImmediatePropagation()
+// },{capture:true})
+// Object.defineProperty(document, "visibilityState", {value: "visible", writable: false});
+// Object.defineProperty(document, "hidden", {value: false, writable: false});
+// Object.defineProperty(document, "hasFocus",{
+//     value:()=>{return true;},
+//     writable:false,
+// })
 
-customLog("focus hooked")
+// customLog("focus hooked")
 ass()
