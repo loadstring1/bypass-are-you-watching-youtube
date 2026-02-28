@@ -2,7 +2,7 @@
 // @name YouTube Better NonStop stable
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version 1.9.1.6772
+// @version 1.9.1.6773
 // @description Bypasses are you still watching
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
@@ -69,5 +69,29 @@ async function ass(){
 };
 
 customLog(`started ${location.href}`)
+
+customLog("hooking pause")
+
+const originalPause = HTMLVideoElement.prototype.pause;
+HTMLVideoElement.prototype.pause = function() {
+    const stack = new Error().stack;
+    
+    const splitted=stack.split("\n")
+    const lastStack=splitted[splitted.length-2]
+
+    if (lastStack && lastStack.includes("pause")){
+        customLog("are you there pause blocked!")
+        return;
+    }
+
+    customLog(`${stack}\npaused the video`)
+    console.log(splitted)
+    customLog(`last stack: ${lastStack}`)
+    customLog(`last stack length ${lastStack!=null && lastStack.length || "null"}`)
+
+    return originalPause.apply(this, arguments);
+};
+
+customLog("pause hooked")
 
 ass()
