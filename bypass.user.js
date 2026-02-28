@@ -75,7 +75,7 @@ customLog("hooking pause")
 const originalPause = HTMLVideoElement.prototype.pause;
 HTMLVideoElement.prototype.pause = function() {
     const stack = new Error().stack;
-    
+
     const splitted=stack.split("\n")
     const lastStack=splitted[splitted.length-2]
 
