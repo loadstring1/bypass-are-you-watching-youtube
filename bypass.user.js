@@ -2,7 +2,7 @@
 // @name YouTube Better NonStop stable
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version 1.9.1.6773
+// @version 1.9.1.6774
 // @description Bypasses are you still watching
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
@@ -17,20 +17,6 @@
 
 function customLog(str){
     console.log(`better nonstop: ${str}`)
-}
-
-var shouldKeepChecking=false
-function keepVideoPlaying(vid){
-    if (shouldKeepChecking==false) return;
-    customLog("loop checking if youtube still kept the video paused")
-
-    if (vid.paused){
-        vid.play()
-    }
-
-    setTimeout(()=>{
-        keepVideoPlaying(vid)
-    },100)
 }
 
 async function ass(){
@@ -52,18 +38,10 @@ async function ass(){
 
     customLog("detected shitty dialog - waiting 1 second")
 
-    shouldKeepChecking=true
-    keepVideoPlaying(video)
-
     await new Promise((resolve=>setTimeout(resolve,1000)))
 
     confirmButton.click()
     customLog("confirm button clicked.")
-
-    setTimeout(()=>{
-        shouldKeepChecking=false
-        customLog("loop check killed.")
-    },5000)
 
     setTimeout(ass,1000)
 };
