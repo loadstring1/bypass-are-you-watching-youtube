@@ -2,7 +2,7 @@
 // @name YouTube Better NonStop nightly
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version 1.9.2.6771
+// @version 1.9.2.6772
 // @description Bypasses are you still watching
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
@@ -85,17 +85,42 @@ customLog(`started ${location.href}`)
 
 // customLog("focus hooked")
 
+
+//before fix
+// const originalPause = HTMLVideoElement.prototype.pause;
+// HTMLVideoElement.prototype.pause = function() {
+//     const stack = new Error().stack;
+
+//     const splitted=stack.split("\n")
+//     const lastStack=splitted[splitted.length-2]
+
+//     if (lastStack && lastStack.includes("pause")){
+//         customLog("are you there pause blocked!")
+//         return;
+//     }
+
+//     customLog(`${stack}\npaused the video`)
+//     console.log(splitted)
+//     customLog(`last stack: ${lastStack}`)
+//     customLog(`last stack length ${lastStack!=null && lastStack.length || "null"}`)
+
+//     return originalPause.apply(this, arguments);
+// };
+
 customLog("hooking pause")
 
+//after fix
 const originalPause = HTMLVideoElement.prototype.pause;
 HTMLVideoElement.prototype.pause = function() {
-    const stack = new Error().stack;
-
+    const stack=new Error().stack;
     const splitted=stack.split("\n")
     const lastStack=splitted[splitted.length-2]
 
+    originalPause.apply(this, arguments);
+
     if (lastStack && lastStack.includes("pause")){
         customLog("are you there pause blocked!")
+        this.play()
         return;
     }
 
@@ -104,9 +129,8 @@ HTMLVideoElement.prototype.pause = function() {
     customLog(`last stack: ${lastStack}`)
     customLog(`last stack length ${lastStack!=null && lastStack.length || "null"}`)
 
-    return originalPause.apply(this, arguments);
+    return;
 };
 
 customLog("pause hooked")
-
 ass()
