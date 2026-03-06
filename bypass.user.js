@@ -73,5 +73,4 @@ HTMLVideoElement.prototype.pause = function() {
 };
 
 customLog("pause hooked")
-
 ass()
