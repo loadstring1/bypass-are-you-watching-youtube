@@ -123,7 +123,7 @@ const originalPlay = HTMLVideoElement.prototype.play
 
 HTMLVideoElement.prototype.play = function(){
     userPaused=false;
-    customLog("play called userpause set to false")
+    customLog("play called userPaused set to false")
     return originalPlay.apply(this,arguments)
 }
 
