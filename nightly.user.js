@@ -134,7 +134,12 @@ HTMLVideoElement.prototype.pause = function() {
 
     originalPause.apply(this, arguments);
 
-    if (lastStack && lastStack.includes("pause") && userPaused==false){
+    if (userPaused){
+        customLog("stack check and stack logging ignored because user paused the video.")
+        return;
+    }
+
+    if (lastStack && lastStack.includes("pause")){
         customLog("are you there pause blocked!")
         this.play()
         return;
