@@ -2,7 +2,7 @@
 // @name YouTube Better NonStop nightly
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version 1.9.2.6772
+// @version 1.9.2.6773
 // @description Bypasses are you still watching
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
@@ -14,6 +14,8 @@
 // @grant none
 // @noframes
 // ==/UserScript==
+
+var userPaused=false;
 
 function customLog(str){
     console.log(`better nonstop: ${str}`)
@@ -34,12 +36,20 @@ function customLog(str){
 // }
 
 async function ass(){
+    customLog(`current userPaused variable: ${userPaused}`)
+
     var video=document.querySelector("video")
     var shittyDialog=document.querySelector("tp-yt-paper-dialog")
     var confirmButton=shittyDialog && shittyDialog.querySelector("#confirm-button") || null
 
     if (video==null || shittyDialog==null || confirmButton==null){
         customLog("waiting for this stupid ass popup")
+        setTimeout(ass,300)
+        return;
+    }
+
+    if (userPaused){
+        customLog("user paused the video ignoring pop-up.")
         setTimeout(ass,300)
         return;
     }
@@ -111,6 +121,14 @@ customLog("hooking pause")
 
 //after fix
 const originalPause = HTMLVideoElement.prototype.pause;
+const originalPlay = HTMLVideoElement.prototype.play
+
+HTMLVideoElement.prototype.play = function(){
+    userPaused=false;
+    customLog("play called userpause set to false")
+    return originalPlay.apply(this,arguments)
+}
+
 HTMLVideoElement.prototype.pause = function() {
     const stack=new Error().stack;
     const splitted=stack.split("\n")
@@ -118,11 +136,13 @@ HTMLVideoElement.prototype.pause = function() {
 
     originalPause.apply(this, arguments);
 
-    if (lastStack && lastStack.includes("pause")){
+    if (lastStack && lastStack.includes("pause") && userPaused==false){
         customLog("are you there pause blocked!")
         this.play()
         return;
     }
+
+    userPaused=true;
 
     customLog(`${stack}\npaused the video`)
     console.log(splitted)
@@ -132,5 +152,5 @@ HTMLVideoElement.prototype.pause = function() {
     return;
 };
 
-customLog("pause hooked")
+customLog("pause and play hooked")
 ass()
