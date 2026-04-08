@@ -115,7 +115,7 @@ customLog(`started ${location.href}`)
 //     return originalPause.apply(this, arguments);
 // };
 
-customLog("hooking pause")
+customLog("hooking pause and play")
 
 //after fix
 const originalPause = HTMLVideoElement.prototype.pause;
