@@ -36,8 +36,6 @@ function customLog(str){
 // }
 
 async function ass(){
-    customLog(`current userPaused variable: ${userPaused}`)
-
     var video=document.querySelector("video")
     var shittyDialog=document.querySelector("tp-yt-paper-dialog")
     var confirmButton=shittyDialog && shittyDialog.querySelector("#confirm-button") || null
