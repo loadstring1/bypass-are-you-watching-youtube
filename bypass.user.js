@@ -2,7 +2,7 @@
 // @name YouTube Better NonStop stable
 // @namespace https://github.com/loadstring1/bypass-are-you-watching-youtube
 // @homepage https://github.com/loadstring1/bypass-are-you-watching-youtube
-// @version 1.9.1.6775
+// @version 1.9.1.6776
 // @description Bypasses are you still watching
 // @match *://*.youtube.com/*
 // @match *://music.youtube.com/*
@@ -15,6 +15,8 @@
 // @noframes
 // ==/UserScript==
 
+var userPaused=false;
+
 function customLog(str){
     console.log(`better nonstop: ${str}`)
 }
@@ -26,6 +28,12 @@ async function ass(){
 
     if (video==null || shittyDialog==null || confirmButton==null){
         customLog("waiting for this stupid ass popup")
+        setTimeout(ass,300)
+        return;
+    }
+
+    if (userPaused){
+        customLog("user paused the video ignoring pop-up.")
         setTimeout(ass,300)
         return;
     }
@@ -48,9 +56,17 @@ async function ass(){
 
 customLog(`started ${location.href}`)
 
-customLog("hooking pause")
+customLog("hooking pause and play")
 
 const originalPause = HTMLVideoElement.prototype.pause;
+const originalPlay = HTMLVideoElement.prototype.play
+
+HTMLVideoElement.prototype.play = function(){
+    userPaused=false;
+    customLog("play called userPaused set to false")
+    return originalPlay.apply(this,arguments)
+}
+
 HTMLVideoElement.prototype.pause = function() {
     const stack=new Error().stack;
     const splitted=stack.split("\n")
@@ -58,11 +74,18 @@ HTMLVideoElement.prototype.pause = function() {
 
     originalPause.apply(this, arguments);
 
+    if (userPaused){
+        customLog("stack check and stack logging ignored because user paused the video.")
+        return;
+    }
+
     if (lastStack && lastStack.includes("pause")){
         customLog("are you there pause blocked!")
         this.play()
         return;
     }
+
+    userPaused=true;
 
     customLog(`${stack}\npaused the video`)
     console.log(splitted)
@@ -72,5 +95,5 @@ HTMLVideoElement.prototype.pause = function() {
     return;
 };
 
-customLog("pause hooked")
+customLog("pause and play hooked")
 ass()
